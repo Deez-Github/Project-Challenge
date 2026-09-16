@@ -1,7 +1,26 @@
-[
+[7
   {
-    "category": "Cloth",
-    "amount": 1200,
-    "description": "Event"
+    "item": "Rice",
+    "category": "Food",
+    "amount": 1234.0,
+    "description": "Lunch"
+  },
+  {
+    "item": "Beans",
+    "category": "Food",
+    "amount": 1200.0,
+    "description": "Breakfast"
+  },
+  {
+    "item": "Bread",
+    "category": "Food",
+    "amount": 300.0,
+    "description": "Friend"
+  },
+  {
+    "item": "Fuel",
+    "category": "Transport",
+    "amount": 10000.0,
+    "description": "Car"
   }
 ]
