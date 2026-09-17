@@ -1,5 +1,4 @@
 import json
-
 import subprocess
 import platform
 
@@ -132,9 +131,9 @@ def delete_expense():
     save_expenses()
 
     print(
-        f"The following expense {deleted_expenses["category"]} "
-        f"for {deleted_expenses["description"]} was deleted successfully!"
-    )   
+    f"The following expense {deleted_expenses['category']} "
+    f"for {deleted_expenses['description']} was deleted successfully!"
+    )
 
 
 
@@ -217,6 +216,38 @@ def edit_expense():
     save_expenses()
 
 
+def search_expenses():
+    print("\n==========================")
+    print(" SEARCH EXPENSES")
+    print("==========================")
+
+    if len(expenses) == 0:
+        print("NO EXPENSES TO SEARCH")
+        return
+
+    search = input("What are you looking for: ").strip().lower()
+    found = False
+
+    for index, expense in enumerate(expenses, start=1):
+
+        if (
+            search in expense["item"].lower()
+            or search in expense["category"].lower()
+            or search in expense["description"].lower()
+        ):
+
+            print(
+                f"{index}. "
+                f"{expense['item']} - "
+                f"{expense['category']} - "
+                f"#{expense['amount']} - "
+                f"{expense['description']}"
+            )
+            found = True
+
+    if not found:
+        print("item not found")
+
 
 def save_expenses():
     with open("expenses.json", "w") as file:
@@ -247,7 +278,8 @@ def show_menu():
     print("4. Spending by Category")
     print("5. Delete Expense")
     print("6. Edit Expense")
-    print("7. exit")
+    print("7. Search Expense")
+    print("8. exit")
 
 while True:
 
@@ -284,14 +316,20 @@ while True:
         clear_terminal()
         print("Delete Expense")
         delete_expense()
+        save_expenses()
 
     elif choice == "6":
         clear_terminal()
+        save_expenses()
         print("Edit Expense")
         edit_expense()
 
-
     elif choice == "7":
+        clear_terminal()
+        print("Search Expense")
+        search_expenses()
+
+    elif choice == "8":
         clear_terminal()
         save_expenses()
         print("Goodbye")
