@@ -1,7 +1,17 @@
 import random
 import json
 import os
+import platform
+import subprocess
 
+
+def clear_terminal():
+    if platform.system()== "Windows":
+        command = "cls"
+    else:
+        command = "clear"
+
+    subprocess.run(command, shell=True)
 
 def load_questions():
     try:
@@ -21,6 +31,8 @@ def load_questions():
         print("ERROR: Invalid JSON.")
         print(error)
         return []
+
+
 
 
 questions = load_questions()
@@ -119,20 +131,30 @@ while True:
 
     if choice == "1":
       print("Welcome to Maths Quiz")
+      clear_terminal()
       maths_quiz()
+      
         
     elif choice == "2":
       print("Welcome to Science Quiz")
+      clear_terminal()
       science_quiz()
-
+      
     elif choice == "3":
       print("Welcome to General Knowledge Quiz")
+      clear_terminal()
       generalKnowledge_Quiz()
+      clear_terminal()
+
     elif choice == "4":
       print("Welcome to All Assessment")
+      clear_terminal()
       all_quize()
+     
+
     elif choice == "5":
       print("Goodbye")
+      clear_terminal()
       break
     
     else:
